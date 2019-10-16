@@ -1,0 +1,136 @@
+body {
+	background: #79cef0 url("../images/flower-bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+h1 {
+  color: blue;
+  text-align: center;
+}
+#logo{
+	text-align: center;
+	margin: 20px auto 15px auto;
+	max-width: 300px;
+	padding:10px;
+}
+#api{
+	background:#fff;
+	border: 1px solid #ccc;
+	max-width: 450px;
+	min-width: 250px;
+	min-height: 350px;
+	margin: 0px auto;
+	border-radius: 5px;
+}
+.intro p{
+	font-size: 1.7em;
+	margin: 30px 10px 20px 30px;
+}
+.intro h2 {
+  text-align: center;
+  font-size: 1.8em;
+  margin: 30px 0px 30px 0px;
+}
+.entry {
+  width: 300px ;
+  margin-left: auto ;
+  margin-right: auto ;
+}
+.divider h2 {
+  text-align: center;
+  font-size: 1.2em;
+  margin: 10px 0px 10px 0px;
+  font-weight: bold;
+}
+.create {
+  width: 300px ;
+  margin-left: auto ;
+  margin-right: auto ;
+  padding: 5px 0px 20px 0px;
+}
+.create a{
+	float: right;
+}
+.entry-item label{
+	display: inline-block;
+	width: 150px;
+}
+.entry-item input,
+.attrEntry input[type=text],
+.attrEntry input[type=password],
+.attrEntry select{
+	display: block;
+	width: 90%;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #efefef;
+	margin: 0px 0px 20px 0px;
+}
+#email_info{
+	display: block !important;
+	font-size: 1em;
+	margin: 10px 0px 20px 0px;
+}
+.buttons{
+	margin: 20px 0px 20px 35px;
+}
+.buttons.verify{
+	margin: 10px 0px 10px 0px;
+}
+
+.buttons button#continue,
+.buttons button#cancel{
+	display: inline-block;
+	width: 100px;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #efefef;
+	margin-bottom: 10px 5px;
+	font-weight: bold;
+}
+.buttons button#cancel{
+	background-color: #efefef;
+	font-weight: normal;
+}
+
+.buttons.verify button{
+	background: #444;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	margin: 10px 0px 20px 0px;
+	color: #fff;
+}
+.error{
+	color: #ff0000;
+	margin: 5px 10px 5px 0px;
+}
+.error[aria-hidden=true]{
+	display: none;
+}
+.verificationInfoText{
+	
+	margin: 10px 0px 5px 0px;
+}
+#attributeList ul li{
+	list-style: none;
+}
+a.helpLink.tiny{
+	display: none;
+}
+#copyright{
+	margin: 10px 0px;
+	text-align: center;
+	color: #444;
+}
+#copyright a{
+	text-decoration: none;
+	padding: 0px 10px;
+}
+#copyright a img{
+	height: 35px;
+}
+#copyright h4{
+	font-size: 1em;
+	padding: 10px 0px 5px 0px;
+}

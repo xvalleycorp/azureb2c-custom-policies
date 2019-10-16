@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+  PolicySchemaVersion="0.3.0.0"
+  TenantId="{tenant-name}.onmicrosoft.com"
+  PolicyId="B2C_1A_SAML_Slack"
+  PublicPolicyUri="https://{tenant-name}.onmicrosoft.com/B2C_1A_SAML_Slack">
+
+  <BasePolicy>
+    <TenantId>{tenant-name}.onmicrosoft.com</TenantId>
+    <PolicyId>B2C_1A_SAML_Slack_TrustFrameworkExtensions</PolicyId>
+  </BasePolicy>
+
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignInSAML" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="SAML2"/>
+      <Metadata>
+        <!-- This is the sample metadata for the Slack SSO SAML-->
+        <Item Key="PartnerEntity">
+          <![CDATA[
+            <m:EntityDescriptor entityID="https://{your-workspace}.slack.com/sso/saml" 
+              ID="_ecce3f06-9ca2-40b3-a8c9-71e8559242f5" 
+              validUntil="2030-01-01T00:00:00.7692433Z" 
+              xmlns:m="urn:oasis:names:tc:SAML:2.0:metadata">
+
+              <m:SPSSODescriptor 
+                  protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol" 
+                  WantAssertionsSigned="true" 
+                  AuthnRequestsSigned="false" >
+                  
+              <m:SingleLogoutService 
+                  Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" 
+                  Location="https://{your-workspace}.slack.com/sso/saml/logout" 
+                  ResponseLocation="https://{your-workspace}.slack.com/" />
+
+              <m:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</m:NameIDFormat> 
+
+              <m:AssertionConsumerService 
+                  Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" 
+                  Location="https://{your-workspace}.slack.com/sso/saml" 
+                  index="0" 
+                  isDefault="true" />
+                  <m:AttributeConsumingService index="0" isDefault="true">
+                    <m:ServiceName xml:lang="en">Slack</m:ServiceName>
+                    <m:RequestedAttribute Name="urn:oid:2.5.4.4" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" isRequired="true" />
+                    <m:RequestedAttribute Name="urn:oid:2.5.4.3" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" isRequired="false" />
+                  </m:AttributeConsumingService>
+              </m:SPSSODescriptor>
+              </m:EntityDescriptor>
+            ]]>
+        </Item>
+      </Metadata>
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="surname" />
+        <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" DefaultValue="" PartnerClaimType="User.Email"/><!-- This is required for field mapping in Slack-->
+        <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="" />
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="objectId"/>
+      </OutputClaims>
+      <SubjectNamingInfo ClaimType="objectId" ExcludeAsClaim="true"/>
+    </TechnicalProfile>
+  </RelyingParty>
+</TrustFrameworkPolicy>
+
+
+
